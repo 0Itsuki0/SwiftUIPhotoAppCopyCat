@@ -12,6 +12,8 @@ struct PHAssetDemoApp: App {
     var body: some Scene {
         WindowGroup {
             ContentView()
+                .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .center)
+                .background(.gray.opacity(0.2))
         }
     }
 }

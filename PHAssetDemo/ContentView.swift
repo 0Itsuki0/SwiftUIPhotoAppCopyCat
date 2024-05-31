@@ -8,17 +8,21 @@
 import SwiftUI
 
 struct ContentView: View {
+    @StateObject var photoLibraryManager = PhotoLibraryManager()
+    
     var body: some View {
-        VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundStyle(.tint)
-            Text("Hello, world!")
+        NavigationStack {
+            Text("Assets Loaded: \(photoLibraryManager.photoAssetCollection.count)")
+                .foregroundStyle(.white)
+                .padding()
+                .background(RoundedRectangle(cornerRadius: 16).fill(.black))
+            ThumbnailCollectionView()
         }
-        .padding()
+        .environmentObject(photoLibraryManager)
+        .ignoresSafeArea()
+        .navigationBarHidden(true)
+        .statusBar(hidden: true)
+
     }
 }
 
-#Preview {
-    ContentView()
-}
